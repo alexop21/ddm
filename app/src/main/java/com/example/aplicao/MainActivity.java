@@ -1,9 +1,11 @@
 package com.example.aplicao;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
                 nomes
         );
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener((parent, view, position, id)->{
+            Toast.makeText(this,nomes[position],Toast.LENGTH_LONG).show();
+            Intent i= new Intent(getApplicationContext(),ActivityExibeDados.class);
+            i.putExtra("user",nomes[position]);
+            startActivity(i);
+        });
 
     }
 }
